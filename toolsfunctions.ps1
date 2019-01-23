@@ -19,13 +19,14 @@ function moveit {
 	$alljobscompleted = $false
 
 	while (!$alljobscompleted){
-		$jobs = get-bitstransfer
 		write-host "Waiting for all jobs to queue and finish transferring."
 		if($jobs.jobstate -contains "Queued" -or $jobs.jobstate -contains "Transferring"){
 			$alljobscompleted = $false
 		}else{
 			$alljobscompleted = $true
 		}
+		
+		$jobs = get-bitstransfer
 	}
 	$jobs | complete-bitstransfer
 }
