@@ -19,6 +19,7 @@ function moveit {
 	$alljobscompleted = $false
 
 	while (!$alljobscompleted){
+		start-sleep -seconds 5
 		write-host "Waiting for all jobs to queue and finish transferring."
 		if($jobs.jobstate -contains "Queued" -or $jobs.jobstate -contains "Transferring"){
 			$alljobscompleted = $false
